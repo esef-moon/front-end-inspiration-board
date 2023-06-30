@@ -37,13 +37,21 @@ function App() {
   const loadCards = (boardId) => {
     axios.get(`${RENDER_URL}/${boardId}/cards`)
     .then((response)=> {
-      const initialCardData = [];
-      response.data.forEach((card) => {
-        initialCardData.push(card);
+      // const initialCardData = [];
+      const cardCopy = response.data.map((card)=> {
+        return {
+          id: card.card_id,
+          message: card.message,
+          likesCount:  card.likes_count,
+        };  
       });
-      
-      setCards(initialCardData)
+      setCards(cardCopy);
     })
+      // response.data.forEach((card) => {
+      //   initialCardData.push(card);
+      // });
+    //   setCards(initialCardData)
+    // })
     .catch((error)=>{
       console.log('error', error)
     })
@@ -63,7 +71,7 @@ function App() {
       if (card.id === cardId) {
         return {
           ...card, 
-          isLiked: card.isLiked + 1
+          likesCount: card.likesCount + 1
         }
       }
         return card;
@@ -80,14 +88,14 @@ function App() {
       setCards(updatedCards)
     }
 
-    const createNewCard = ({message, likes_count, id}) => {
-      console.log("Inside app.js & createNewAnimal Function")
-      //rename snake to camel case for id and likes count
-      const updatedCardInfo = {
-        ...newCardInfo, 
-        "id": boardId, 
-        "likes_count": likesCount
-      }  
+    // const createNewCard = ({message, likes_count, id}) => {
+    //   console.log("Inside app.js & createNewAnimal Function")
+    //   //rename snake to camel case for id and likes count
+    //   const updatedCardInfo = {
+    //     ...newCardInfo, 
+    //     "id": boardId, 
+    //     "likes_count": likesCount
+    //   }  
 
       //api post call to add newcard to a board and backend
       
@@ -106,8 +114,8 @@ function App() {
     {/* Make a new Board form */}
   <NewBoardForm createNewCard={createNewCard} />
   {/* Make a list of animals */}
-  <CardList 
-    listOfCards={cards} 
+  <Board 
+    cardData={card} 
     updateLike={updateLike}
     updateDelete={updateDelete}
     />
