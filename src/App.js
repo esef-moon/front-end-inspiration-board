@@ -3,21 +3,29 @@ import CardList from './components/CardList';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import NewBoardForm from './components/NewBoardForm';
+import Board from './components/Board';
 
-// create currentBoard state and selectedBoard state
-// create the showHide state
-// change currentBoard function
-// create newBoard toggle form
-// create NewBoard axios call
-// create deleteBoard axios call
-// create function to add buttons for changing/selecting and deleting boards
-// 
+
 
 
 
 function App() {
+
   // setting board state, empty before axios call
-  const [boards, setBoards] = useState([])
+  const [boards, setBoards] = useState([
+    {id: 0,
+    title: '',
+    owner: ''}
+  ])
+// create currentBoard state and selectedBoard state
+  const [selectedBoard, setSelectedBoard] = useState({
+    id: 0,
+    title: '',
+    owner: ''
+  });
+
+  // create the showHideCards state 
+  const [showHideCards, setShowHideCards] = useState('+')
 
   //Render initial address
   const RENDER_URL = 'https://asj-forever-inspiration.onrender.com/boards'
@@ -39,64 +47,120 @@ function App() {
 
   }
 
-
   //when app initialized, call our backend 
-  //set the value of animals backend on state
+  //set the value of boards backend on state
   useEffect(()=>{loadBoards()}, [])
 
-  const updateLike = (cardId) => {
-    console.log('One more like has been added!')
+  // change selectedBoard function
 
-
-    const updatedCards = cards.map(card => {
-      if (card.id === cardId) {
-        return {
-          ...card, 
-          likesCount: card.likesCount + 1
-        }
+  const changeSelectedBoard = (boardId) => {
+    boards.forEach(board => {
+      if (board.id === boardId) {
+        setSelectedBoard(board);
       }
-        return card;
-      });
-    setCards(updatedCards);
-  }
+    })
+  };
 
-    const updateDelete = (cardId) => {
-      const updatedCards = cards.map (card => {
-        if (card.id !== cardId) {
-          return {...cards}
-        }
-      });
-      setCards(updatedCards)
+  // create newBoard toggle form
+
+  const newBoardToggleForm = () => {
+    if (showHide === '+') {
+      setShowHideCards('-');
+    } else {
+      setShowHideCards('+');
     }
+  };
 
-      //api post call to add newcard to a board and backend
-      
-      axios.post(`${RENDER_URL}/${id}/cards`, updatedCardInfo)
+  // create NewBoard axios call
+  const createNewBoard = (newBoardInfo) => {
+    const updateNewBoardInfo = {
+      ...newBoardInfo
+    };
+
+    axios
+      .post(`${RENDER_URL}/boards`, updateNewBoardInfo)
       .then(() => {
-        // make another get request to refresh page OR
-        loadCards();
+        // update the Boards state to refresh the page
+        const newBoardsArray = [...boards];
+        newBoardsArray.push(newBoardInfo);
+        setBoards(newBoardsArray);
       })
-      .catch((error)=> {
-        console.log('error', error)
+      .catch((error) => {
+        console.log(error);
+      });
+  }; 
+
+  // create deleteBoard axios call
+
+  const deleteBoard = (boardId) => {
+    axios
+      .delete(`${RENDER_URL}/boards/${boardId}`)
+      .then(() => {
+        const newBoards = boards.filter((board) => board.id !== boardId);
+        setBoards(newBoards);
       })
-    }
+      .catch((error) => {
+        console.error(error.response.data.message);
+      });
+  };
+
+  // select or delete board functions
+
+  const deleteSelectBoardButtons = () => {
+    return boards.map((board) => {
+      return (
+        <button 
+        id={board.id} 
+        name='board'
+        onClick={changeCurrentBoard(board.id)}
+        >
+          {board.title}
+          <button
+            id={board.id}
+            name='trash'
+            onClick={deleteBoard(board.id)}
+          >
+            🗑️
+          </button>
+        </button>
+      )
+    });
+  };
+
   return (
-  <section>
-    <h1> AJS INSPIRATION BOARD</h1>
-    {/* Make a new Board form */}
-    {/* Return showHide */}
-    {/* Return createNewBoard */}
-  <NewBoardForm createNewCard={createNewCard} />
-  {/* Pass down current board */}
-  <Board 
-    cardData={card} 
-    updateLike={updateLike}
-    updateDelete={updateDelete}
-    />
-
-
-  </section>
+    <div>
+      <header>
+      <span>
+          <button 
+            onClick={newBoardToggleForm}
+          >
+            New Board {showHideCards}
+          </button>
+          {deleteSelectBoardButtons}
+      </span>
+      </header>
+      <main>
+        <section>
+          <NewBoardForm 
+            showHideCards={showHideCards} 
+            createNewBoard={createNewBoard} 
+          />
+        </section>
+        <section>
+          <h1>AJS INSPIRATION BOARD</h1>
+          <h2>Board Description!</h2>
+        </section>
+        <section>
+          <Board 
+            selectedBoard={selectedBoard}
+          />
+        </section>
+      </main>
+    </div>
   );
-}
+  };
 
-export default App;
+  export default App;
+
+
+
