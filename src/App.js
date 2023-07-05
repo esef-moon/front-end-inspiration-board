@@ -4,6 +4,15 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import NewBoardForm from './components/NewBoardForm';
 
+// create currentBoard state and selectedBoard state
+// create the showHide state
+// change currentBoard function
+// create newBoard toggle form
+// create NewBoard axios call
+// create deleteBoard axios call
+// create function to add buttons for changing/selecting and deleting boards
+// 
+
 
 
 function App() {
@@ -112,8 +121,10 @@ function App() {
   <section>
     <h1> AJS INSPIRATION BOARD</h1>
     {/* Make a new Board form */}
+    {/* Return showHide */}
+    {/* Return createNewBoard */}
   <NewBoardForm createNewCard={createNewCard} />
-  {/* Make a list of animals */}
+  {/* Pass down current board */}
   <Board 
     cardData={card} 
     updateLike={updateLike}
