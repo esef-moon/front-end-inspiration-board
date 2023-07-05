@@ -19,9 +19,6 @@ function App() {
   // setting board state, empty before axios call
   const [boards, setBoards] = useState([])
 
-  //create card state, gets updated through api call
-  const [cards, setCards] = useState([])
-
   //Render initial address
   const RENDER_URL = 'https://asj-forever-inspiration.onrender.com/boards'
 
@@ -36,31 +33,6 @@ function App() {
       
       setBoards(initialBoardData)
     })
-    .catch((error)=>{
-      console.log('error', error)
-    })
-
-  }
-
-  // get all cards from one board
-  const loadCards = (boardId) => {
-    axios.get(`${RENDER_URL}/${boardId}/cards`)
-    .then((response)=> {
-      // const initialCardData = [];
-      const cardCopy = response.data.map((card)=> {
-        return {
-          id: card.card_id,
-          message: card.message,
-          likesCount:  card.likes_count,
-        };  
-      });
-      setCards(cardCopy);
-    })
-      // response.data.forEach((card) => {
-      //   initialCardData.push(card);
-      // });
-    //   setCards(initialCardData)
-    // })
     .catch((error)=>{
       console.log('error', error)
     })
@@ -96,15 +68,6 @@ function App() {
       });
       setCards(updatedCards)
     }
-
-    // const createNewCard = ({message, likes_count, id}) => {
-    //   console.log("Inside app.js & createNewAnimal Function")
-    //   //rename snake to camel case for id and likes count
-    //   const updatedCardInfo = {
-    //     ...newCardInfo, 
-    //     "id": boardId, 
-    //     "likes_count": likesCount
-    //   }  
 
       //api post call to add newcard to a board and backend
       
