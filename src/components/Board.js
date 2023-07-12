@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import './Board.css';
 import CardList from './CardList';
 import axios from 'axios';
-
 import { selectedBoard } from './App'
-import { useState } from 'react';
 
 
 
