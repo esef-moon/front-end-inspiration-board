@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Board.css';
 import CardList from './CardList';
 import axios from 'axios';
+
 import { selectedBoard } from './App'
+import { useState } from 'react';
 
 
 
@@ -67,7 +69,7 @@ const Board = (props) => {
  const createNewCard = (message) => {
   axios
     .post(
-      `${RENDER_URL}/boards/${currentBoard.board_id}/cards`,
+      `${RENDER_URL}/boards/${selectedBoard.board_id}/cards`,
       {message}
     )
     .then((result) => {
