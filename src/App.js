@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios, {isCancel, AxiosError} from 'axios';
 import NewBoardForm from './components/NewBoardForm';
 import Board from './components/Board';
+// import BoardList from './components/BoardList';
 
 
 
@@ -103,26 +104,30 @@ function App() {
         console.error(error.response.data.message);
       });
   };
-
+  console.log(boards)
   // select or delete board functions
+  const renderBoardList = () => {
 
-  const deleteSelectBoardButtons = () => {
     return boards.map((board) => {
-      return (
-        <button 
-        id={board.id} 
-        name='board'
-        onClick={changeSelectedBoard(board.id)}
-        >
-          {board.title}
-          <button
-            id={board.id}
-            name='trash'
-            onClick={deleteBoard(board.id)}
+      return ( 
+        <span>
+          <button 
+          id={board.board_id} 
+          name='board'
+          onClick={changeSelectedBoard(board.board_id)}
           >
-            🗑️
+            {board.title} 
           </button>
-        </button>
+
+          <button
+              id={board.board_id}
+              name='trash'
+              // onClick={deleteBoard(board.board_id)}
+            >
+              🗑️
+          </button>
+        </span>
+        
       )
     });
   };
@@ -136,7 +141,10 @@ function App() {
           >
             New Board {showHideCards}
           </button>
-          {deleteSelectBoardButtons}
+          {renderBoardList()}
+          {/* <BoardList
+            boards = { boards }
+          /> */}
       </span>
       </header>
       <main>
