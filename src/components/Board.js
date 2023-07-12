@@ -3,14 +3,9 @@ import PropTypes from 'prop-types';
 import './Board.css';
 import CardList from './CardList';
 import axios from 'axios';
-import { selectedBoard } from './App'
+// import App from '../App'
 
-
-// Hold state of cards from App
-// Make axios call to get all cards
-
-  //create card state, gets updated through api call
-const Board = (props) => {
+const Board = ({selectedBoard}, props) => {
   
   //Render initial address
   const RENDER_URL = 'https://asj-forever-inspiration.onrender.com/boards'
@@ -71,14 +66,14 @@ const Board = (props) => {
     )
     .then((result) => {
       console.log(result);
-      //rename snake to camel case for id and likes count
-
-      const updatedCardInfo = {
-        ...newCardInfo, 
-        "id": boardId, 
-        "likes_count": likesCount
+      // rename camel and snake case props from axios call
+      const newCard = {
+        id: result.data.card.id,
+        message: result.data.card.message,
+        likes_count: result.data.card.likes_count,
       };
-      setCardData([...cardData, newCard], () => {
+
+      setCards([...cards, newCard], () => {
         console.log(this.state.cardsData);
       }); 
     })
@@ -112,6 +107,7 @@ const Board = (props) => {
           createNewCardProp={props.createNewCard}
           updateDeleteProp={props.updateDelete}
           updateLikeProp={props.updateLike}
+          cards = {cards}
           loadCards={loadCards}
           createNewCard={createNewCard}
           updateDelete={updateDelete}

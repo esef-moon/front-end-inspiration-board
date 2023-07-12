@@ -21,7 +21,7 @@ const Card = (props) => {
                 <button onClick={onLikeCard}>
                     {props.updateLike ? '❤️' : '🤍'}
                 </button>
-                <p>{likeCount}</p>
+                {/* <p>{ likesCount }</p> */}
                 <button onClick={onDeleteCard}>
                     Delete Card
                 </button>

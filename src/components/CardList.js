@@ -5,11 +5,10 @@ import Card from './Card';
 import './CardList.css';
 
 
-// Reminder to possibly props with {currentBoard, incrementLikeCount, deleteBoard}
 const CardList = (props) => {
     return (
       <div>
-        {props.cardData.map((card) => (
+        {props.cards.map((card) => (
           <Card
             key={`${card.id}-${card.board_id}`}
             cardId={ card.id }
@@ -25,7 +24,7 @@ const CardList = (props) => {
   };
   
   CardList.propTypes = {
-      cardData: PropTypes.arrayOf(
+      cards: PropTypes.arrayOf(
           PropTypes.shape({
               cardId: PropTypes.number.isRequired,
               boardId: PropTypes.number.isRequired,

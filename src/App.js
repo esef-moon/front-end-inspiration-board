@@ -64,7 +64,7 @@ function App() {
   // create newBoard toggle form
 
   const newBoardToggleForm = () => {
-    if (showHide === '+') {
+    if (showHideCards === '+') {
       setShowHideCards('-');
     } else {
       setShowHideCards('+');
@@ -112,7 +112,7 @@ function App() {
         <button 
         id={board.id} 
         name='board'
-        onClick={changeCurrentBoard(board.id)}
+        onClick={changeSelectedBoard(board.id)}
         >
           {board.title}
           <button
@@ -152,7 +152,7 @@ function App() {
         </section>
         <section>
           <Board 
-            selectedBoard={selectedBoard}
+            selectedBoard={ selectedBoard }
           />
         </section>
       </main>

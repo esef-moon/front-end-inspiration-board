@@ -20,7 +20,7 @@ const NewBoardForm = (props) => {
             setBoardFormData(newBoardFormData);
         };
 
-    const handleFormSubit = (event) => {
+    const handleFormSubmit = (event) => {
         event.preventDefault();
         props.createNewBoard(boardFormData);
         setBoardFormData(INITIAL_FORM_DATA);
@@ -29,7 +29,7 @@ const NewBoardForm = (props) => {
     return (
         <section className={props.showHide}>
             <h3>Create New Board</h3>
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={ handleFormSubmit }>
                 {/* form board title */}
                 <label htmlFor='boardName'>Board Title:</label>
                 <input
