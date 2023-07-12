@@ -6,7 +6,6 @@ import axios from 'axios';
 import { selectedBoard } from './App'
 
 
-
 // Hold state of cards from App
 // Make axios call to get all cards
 
