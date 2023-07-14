@@ -17,6 +17,7 @@ const Board = ({selectedBoard}, props) => {
 
   // get all cards from one board
   const loadCards = (boardId) => {
+  
     axios.get(`${RENDER_URL}/${boardId}/cards`)
     .then((response)=> {
       const cardCopy = response.data.map((card)=> {
@@ -34,6 +35,8 @@ const Board = ({selectedBoard}, props) => {
     })
 
   };
+  loadCards(selectedBoard.boardId)
+  console.log(cards)
   
   // Move the updateLike function -- double check to ensure same functionality
   const updateLike = (cardId) => {
@@ -108,7 +111,6 @@ const Board = ({selectedBoard}, props) => {
           updateDeleteProp={props.updateDelete}
           updateLikeProp={props.updateLike}
           cards = {cards}
-          loadCards={loadCards}
           createNewCard={createNewCard}
           updateDelete={updateDelete}
           updateLike={updateLike}
@@ -124,10 +126,7 @@ Board.propTypes = {
       title: PropTypes.string.isRequired,
       owner: PropTypes.string.isRequired
     }),
-  loadCards: PropTypes.func.isRequired,
-  createNewCard: PropTypes.func.isRequired,
-  updateDelete: PropTypes.func.isRequired,
-  updateLike: PropTypes.func.isRequired,
+  
   };
 
 export default Board;

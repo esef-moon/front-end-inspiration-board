@@ -47,6 +47,7 @@ function App() {
     })
 
   }
+  console.log(boards)
 
   //when app initialized, call our backend 
   //set the value of boards backend on state

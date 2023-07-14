@@ -33,6 +33,8 @@ const CardList = (props) => {
           })
       ),
       updateLike: PropTypes.func,
-      updateDelete: PropTypes.func
+      updateDelete: PropTypes.func,
+      loadCards: PropTypes.func.isRequired,
+      createNewCard: PropTypes.func.isRequired,
   };
 export default CardList;
