@@ -23,6 +23,7 @@ const Board = (props) => {
             id: card.card_id,
             message: card.message,
             likesCount:  card.likes_count,
+            board_id: card.board_id
           };  
         });
         setCards(cardCopy);
@@ -89,15 +90,13 @@ const Board = (props) => {
   const updateDelete = (cardId) => {
     axios
       .delete(`${RENDER_URL}/cards/${cardId}`)
-      .then(() => {})
-        const updatedCards = cards.map (card => {
-          if (card.id !== cardId) {
-            return {...cards}
-          }
-        })
-    setCards(updatedCards)
+      .then(() => {
+        const updatedCards = cards.filter ((card) => card.id !== cardId);
+        setCards(updatedCards);
+  })
     .catch((error) => {
-      console.error(error.response.data.message);
+      console.log(error);
+      // console.error(error.response.data.message);
     });
   };
 
@@ -108,7 +107,7 @@ const Board = (props) => {
       <h4>{props.owner}</h4>
       <span className='card__list'>
         <CardList 
-          boardId={props.id} 
+          board_id={props.id} 
           loadCards={loadCards}
           cards={cards}
           createNewCard={createNewCard}
@@ -122,7 +121,7 @@ const Board = (props) => {
 
 Board.propTypes = {
   selectedBoard: PropTypes.shape({
-    boardId: PropTypes.number.isRequired,
+    board_id: PropTypes.number.isRequired,
   })
 };
 

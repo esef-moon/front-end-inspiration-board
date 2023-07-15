@@ -10,8 +10,8 @@ const CardList = (props) => {
         {props.cards.map((card) => (
           <Card
             key={`${card.id}-${card.board_id}`}
-            cardId={ card.id }
-            boardId={card.boardId}
+            id={ card.id }
+            board_id={card.board_id}
             likesCount={ card.likesCount }
             message={ card.message }
             updateLike={ props.updateLike } 
@@ -25,8 +25,8 @@ const CardList = (props) => {
   CardList.propTypes = {
       cards: PropTypes.arrayOf(
           PropTypes.shape({
-              cardId: PropTypes.number.isRequired,
-              boardId: PropTypes.number.isRequired,
+              id: PropTypes.number.isRequired,
+              board_id: PropTypes.number.isRequired,
               likesCount: PropTypes.number.isRequired,
               message: PropTypes.string.isRequired,
           })

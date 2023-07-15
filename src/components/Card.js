@@ -31,7 +31,7 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
-    card_id: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
     message: PropTypes.string.isRequired,
     updateLike: PropTypes.func.isRequired,
     likesCount: PropTypes.number.isRequired,
