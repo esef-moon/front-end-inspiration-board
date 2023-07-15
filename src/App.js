@@ -80,7 +80,7 @@ function App() {
     };
 
     axios
-      .post(`${RENDER_URL}/boards`, updateNewBoardInfo)
+      .post(`${RENDER_URL}`, updateNewBoardInfo)
       .then(() => {
         // update the Boards state to refresh the page
         const newBoardsArray = [...boards];
@@ -96,7 +96,7 @@ function App() {
 
   const deleteBoard = (boardId) => {
     axios
-      .delete(`${RENDER_URL}/boards/${boardId}`)
+      .delete(`${RENDER_URL}/${boardId}`)
       .then(() => {
         const newBoards = boards.filter((board) => board.id !== boardId);
         setBoards(newBoards);
