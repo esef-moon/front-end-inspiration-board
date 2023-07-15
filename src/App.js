@@ -80,9 +80,9 @@ function App() {
 
   const deleteBoard = (boardId) => {
     axios
-      .delete(`${RENDER_URL}/${boardId}`)
+      .delete(`${RENDER_URL}/${boardId}/delete`)
       .then(() => {
-        const newBoards = boards.filter((board) => board.id !== boardId);
+        const newBoards = boards.filter((board) => board.board_id !== boardId);
         setBoards(newBoards);
       })
       .catch((error) => {
@@ -106,7 +106,7 @@ function App() {
           <button
             id={board.board_id}
             name='trash'
-            // onClick={deleteBoard(board.board_id)}
+            onClick={() => deleteBoard(board.board_id)}
           >
             🗑️
           </button>
