@@ -111,7 +111,7 @@ function App() {
 
     return boards.map((board) => {
       return ( 
-        <span>
+        <span >
           <button 
           id={board.board_id} 
           name='board'
@@ -134,37 +134,42 @@ function App() {
   };
 
   return (
-    <div>
+    <div class="page__container">
       <header>
-      <span>
-          <button 
-            onClick={newBoardToggleForm}
-          >
-            New Board {showHideCards}
-          </button>
-          {renderBoardList()}
-          {/* <BoardList
-            boards = { boards }
-          /> */}
-      </span>
+      <section>
+          <h1>AJS INSPIRATION BOARD</h1>
+          <h2>Board Description!</h2>
+        </section>
+     
       </header>
-      <main>
-        <section>
+      <section class="content__container">
+        <section class="boards__container">
+          <section class="boards__list" >
+              <button 
+                onClick={newBoardToggleForm}
+              >
+                New Board {showHideCards}
+              </button>
+              {renderBoardList()}
+              {/* <BoardList
+                boards = { boards }
+              /> */}
+          </section>
+        </section>
+        
+        <section class="new-board-form__container">
           <NewBoardForm 
             showHideCards={showHideCards} 
             createNewBoard={createNewBoard} 
           />
         </section>
-        <section>
-          <h1>AJS INSPIRATION BOARD</h1>
-          <h2>Board Description!</h2>
-        </section>
+        
         <section>
           <Board 
             selectedBoard={ selectedBoard }
           />
         </section>
-      </main>
+      </section>
     </div>
   );
   };
