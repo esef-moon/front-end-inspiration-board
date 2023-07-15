@@ -6,24 +6,14 @@ import NewBoardForm from './components/NewBoardForm';
 import Board from './components/Board';
 // import BoardList from './components/BoardList';
 
-
-
-
-
 function App() {
+  const emptyBoard = [{ id: 0, title: '', owner: '' }];
 
   // setting board state, empty before axios call
-  const [boards, setBoards] = useState([
-    {id: 0,
-    title: '',
-    owner: ''}
-  ])
-// create currentBoard state and selectedBoard state
-  const [selectedBoard, setSelectedBoard] = useState({
-    id: 0,
-    title: '',
-    owner: ''
-  });
+  const [boards, setBoards] = useState(emptyBoard);
+
+  // create currentBoard state and selectedBoard state
+  const [selectedBoard, setSelectedBoard] = useState(undefined);
 
   // create the showHideCards state 
   const [showHideCards, setShowHideCards] = useState('+')
@@ -47,24 +37,18 @@ function App() {
     })
 
   }
-  console.log(boards)
 
   //when app initialized, call our backend 
   //set the value of boards backend on state
   useEffect(()=>{loadBoards()}, [])
 
   // change selectedBoard function
-
   const changeSelectedBoard = (boardId) => {
-    boards.forEach(board => {
-      if (board.id === boardId) {
-        setSelectedBoard(board);
-      }
-    })
+    const board = boards.find((board) => { return board.board_id === boardId });
+    setSelectedBoard(board);
   };
 
   // create newBoard toggle form
-
   const newBoardToggleForm = () => {
     if (showHideCards === '+') {
       setShowHideCards('-');
@@ -105,27 +89,26 @@ function App() {
         console.error(error.response.data.message);
       });
   };
-  console.log(boards)
+
   // select or delete board functions
   const renderBoardList = () => {
-
     return boards.map((board) => {
       return ( 
-        <span >
+        <span key={board.board_id}>
           <button 
-          id={board.board_id} 
-          name='board'
-          onClick={changeSelectedBoard(board.board_id)}
+            id={board.board_id} 
+            name='board'
+            onClick={() => changeSelectedBoard(board.board_id)}
           >
             {board.title} 
           </button>
 
           <button
-              id={board.board_id}
-              name='trash'
-              // onClick={deleteBoard(board.board_id)}
-            >
-              🗑️
+            id={board.board_id}
+            name='trash'
+            // onClick={deleteBoard(board.board_id)}
+          >
+            🗑️
           </button>
         </span>
         
@@ -164,6 +147,9 @@ function App() {
           />
         </section>
         
+        <section>
+          <Board selectedBoard={ selectedBoard } />
+        </section>
         <section>
           <Board 
             selectedBoard={ selectedBoard }

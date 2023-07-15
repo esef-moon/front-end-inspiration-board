@@ -4,7 +4,6 @@ import Card from './Card';
 // import NewCardForm from './NewBoardForm';
 import './CardList.css';
 
-
 const CardList = (props) => {
     return (
       <div>
