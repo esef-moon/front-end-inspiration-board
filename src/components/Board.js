@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Board = (props) => {
   //Render initial address
-  const RENDER_URL = 'https://asj-forever-inspiration.onrender.com/boards'
+  const RENDER_URL = 'https://asj-forever-inspiration.onrender.com/'
 
   //create card state, gets updated through api call
   const [cards, setCards] = useState([])
@@ -16,7 +16,7 @@ const Board = (props) => {
   const loadCards = (boardId) => {
     console.log(`Loading cards for board ${boardId}!`);
     axios
-      .get(`${RENDER_URL}/${boardId}/cards`)
+      .get(`${RENDER_URL}/boards/${boardId}/cards`)
       .then((response)=> {
         const cardCopy = response.data.map((card)=> {
           return {
@@ -45,7 +45,7 @@ const Board = (props) => {
   const updateLike = (cardId) => {
     console.log('One more like has been added!')
     axios
-      .patch(`${RENDER_URL}/cards/${cardId}`)
+      .patch(`${RENDER_URL}/cards/${cardId}/like`)
       .then((result) => {
         const updatedCards = cards.map(card => {
           if (card.id === cardId) {
