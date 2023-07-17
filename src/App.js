@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios, {isCancel, AxiosError} from 'axios';
 import NewBoardForm from './components/NewBoardForm';
 import Board from './components/Board';
+import NewCardForm from './components/NewCardForm';
 // import BoardList from './components/BoardList';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   const [boards, setBoards] = useState(emptyBoard);
 
   // create currentBoard state and selectedBoard state
-  const [selectedBoard, setSelectedBoard] = useState(undefined);
+  const [selectedBoard, setSelectedBoard] = useState(emptyBoard);
 
   // create the showHideCards state 
   const [showHideCards, setShowHideCards] = useState('+')
@@ -37,6 +38,38 @@ function App() {
     })
 
   }
+  //create card state, gets updated through api call
+  const [cards, setCards] = useState([])
+   // get all cards from one board
+   
+  const loadCards = (boardId) => {
+    console.log(`Loading cards for board ${boardId}!`);
+    axios
+      .get(`${RENDER_URL}/${boardId}/cards`)
+      .then((response)=> {
+        const cardCopy = response.data.map((card)=> {
+          return {
+            id: card.card_id,
+            message: card.message,
+            likesCount:  card.likes_count,
+            board_id: card.board_id
+          };  
+        });
+        setCards(cardCopy);
+      })
+
+      .catch((error)=>{
+        console.log('error', error)
+      })
+  };
+
+  useEffect(() => {
+    console.log(selectedBoard);
+    if (selectedBoard) {
+      loadCards(selectedBoard.board_id);
+    }
+  }, [selectedBoard]);
+
 
   //when app initialized, call our backend 
   //set the value of boards backend on state
@@ -116,6 +149,21 @@ function App() {
     });
   };
 
+  // Create a new card to a board axios call
+  const postCard = (newCardData) => {
+    axios
+    .post(`${RENDER_URL}/boards/${selectedBoard.board_id}/cards`, newCardData)
+    .then((result) => {
+      console.log(result.data);
+      loadBoards();
+      loadCards();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    };
+  
+
   return (
     <div class="page__container">
       <header>
@@ -148,12 +196,17 @@ function App() {
         </section>
         
         <section>
-          <Board selectedBoard={ selectedBoard } />
+          <Board selectedBoard={ selectedBoard } 
+          loadCards = {loadCards}
+          cards = {cards}
+          setCards = {setCards} />
         </section>
+    
         <section>
-          <Board 
-            selectedBoard={ selectedBoard }
+          <div><h2>CREATE A NEW CARD</h2>
+          <NewCardForm addCard={postCard} 
           />
+          </div>
         </section>
       </section>
     </div>

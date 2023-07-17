@@ -5,41 +5,10 @@ import CardList from './CardList';
 import axios from 'axios';
 // import App from '../App'
 
-const Board = (props) => {
+const Board = ({selectedBoard, loadCards, cards, setCards}) => {
   //Render initial address
   const RENDER_URL = 'https://asj-forever-inspiration.onrender.com/'
 
-  //create card state, gets updated through api call
-  const [cards, setCards] = useState([])
-
-  // get all cards from one board
-  const loadCards = (boardId) => {
-    console.log(`Loading cards for board ${boardId}!`);
-    axios
-      .get(`${RENDER_URL}/boards/${boardId}/cards`)
-      .then((response)=> {
-        const cardCopy = response.data.map((card)=> {
-          return {
-            id: card.card_id,
-            message: card.message,
-            likesCount:  card.likes_count,
-            board_id: card.board_id
-          };  
-        });
-        setCards(cardCopy);
-      })
-
-      .catch((error)=>{
-        console.log('error', error)
-      })
-  };
-
-  useEffect(() => {
-    console.log(props);
-    if (props.selectedBoard) {
-      loadCards(props.selectedBoard.board_id);
-    }
-  }, [props.selectedBoard]);
   
   // Move the updateLike function -- double check to ensure same functionality
   const updateLike = (cardId) => {
@@ -67,7 +36,7 @@ const Board = (props) => {
  const createNewCard = (message) => {
   axios
     .post(
-      `${RENDER_URL}/boards/${props.selectedBoard.board_id}/cards`,
+      `${RENDER_URL}/boards/${selectedBoard.board_id}/cards`,
       {message}
     )
     .then((result) => {
@@ -103,11 +72,11 @@ const Board = (props) => {
   // Pass in all props to cardlist --> card
   return (
     <section>
-      <h2>{props.title}</h2>
-      <h4>{props.owner}</h4>
+      <h2>{selectedBoard.title}</h2>
+      <h4>{selectedBoard.owner}</h4>
       <span className='card__list'>
         <CardList 
-          board_id={props.id} 
+          board_id={selectedBoard.id} 
           loadCards={loadCards}
           cards={cards}
           createNewCard={createNewCard}
