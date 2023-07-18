@@ -72,9 +72,9 @@ const Board = ({selectedBoard, loadCards, cards, setCards}) => {
   // Pass in all props to cardlist --> card
   return (
     <section>
-      <h2>{selectedBoard.title}</h2>
-      <h4>{selectedBoard.owner}</h4>
-      <span className='card__list'>
+      <h2>Current Board: {selectedBoard.title}</h2>
+      <h4>Owner: {selectedBoard.owner}</h4>
+      <span className='cards'>
         <CardList 
           board_id={selectedBoard.id} 
           loadCards={loadCards}

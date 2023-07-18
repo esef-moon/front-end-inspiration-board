@@ -167,11 +167,10 @@ function App() {
 
   return (
     <div class="page__container">
-      <header>
-      <section class="AJS__logo">
+      <header class="AJS__logo">
+        <section>
           <h1>AJS INSPIRATION BOARD</h1>
         </section>
-     
       </header>
       <section class="content__container">
         <section class="boards__container">
@@ -195,12 +194,7 @@ function App() {
           />
         </section>
         
-        <section>
-          <Board selectedBoard={ selectedBoard } 
-          loadCards = {loadCards}
-          cards = {cards}
-          setCards = {setCards} />
-        </section>
+        
     
         <section>
           <div><h2>CREATE A NEW CARD</h2>
@@ -209,6 +203,12 @@ function App() {
           </div>
         </section>
       </section>
+      <section class="card-list">
+          <Board selectedBoard={ selectedBoard } 
+          loadCards = {loadCards}
+          cards = {cards}
+          setCards = {setCards} />
+        </section>
     </div>
   );
   };
