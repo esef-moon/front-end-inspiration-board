@@ -8,10 +8,10 @@ import NewCardForm from './components/NewCardForm';
 // import BoardList from './components/BoardList';
 
 function App() {
-  const emptyBoard = [{ id: 0, title: '', owner: '' }];
+  const emptyBoard = { board_id: 0, title: '', owner: '' };
 
   // setting board state, empty before axios call
-  const [boards, setBoards] = useState(emptyBoard);
+  const [boards, setBoards] = useState([emptyBoard]);
 
   // create currentBoard state and selectedBoard state
   const [selectedBoard, setSelectedBoard] = useState(emptyBoard);
@@ -77,7 +77,8 @@ function App() {
 
   // change selectedBoard function
   const changeSelectedBoard = (boardId) => {
-    const board = boards.find((board) => { return board.board_id === boardId });
+    const board = boards.find((board) => { return board.board_id === boardId }); 
+    console.log(`selectedBoard: ${board.board_id}`)
     setSelectedBoard(board);
   };
 
@@ -152,11 +153,11 @@ function App() {
   // Create a new card to a board axios call
   const postCard = (newCardData) => {
     axios
-    .post(`${RENDER_URL}/boards/${selectedBoard.board_id}/cards`, newCardData)
+    .post(`${RENDER_URL}/${selectedBoard.board_id}/cards`, newCardData)
     .then((result) => {
       console.log(result.data);
       loadBoards();
-      loadCards();
+      loadCards(selectedBoard.board_id);
     })
     .catch((error) => {
       console.log(error);
