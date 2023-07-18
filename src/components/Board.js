@@ -74,7 +74,7 @@ const Board = ({selectedBoard, loadCards, cards, setCards}) => {
     <section>
       <h2>Current Board: {selectedBoard.title}</h2>
       <h4>Owner: {selectedBoard.owner}</h4>
-      <span className='cards'>
+      <span>
         <CardList 
           board_id={selectedBoard.id} 
           loadCards={loadCards}

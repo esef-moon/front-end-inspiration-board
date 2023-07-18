@@ -6,7 +6,7 @@ import './CardList.css';
 
 const CardList = (props) => {
     return (
-      <div>
+      <div class="cards"> 
         {props.cards.map((card) => (
           <Card
             key={`${card.id}-${card.board_id}`}

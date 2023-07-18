@@ -197,7 +197,7 @@ function App() {
         
     
         <section>
-          <div><h2>CREATE A NEW CARD</h2>
+          <div><h2>Create Card</h2>
           <NewCardForm addCard={postCard} 
           />
           </div>
