@@ -168,9 +168,8 @@ function App() {
   return (
     <div class="page__container">
       <header>
-      <section>
+      <section class="AJS__logo">
           <h1>AJS INSPIRATION BOARD</h1>
-          <h2>Board Description!</h2>
         </section>
      
       </header>
