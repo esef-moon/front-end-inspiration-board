@@ -54,6 +54,11 @@ p, input, button, label {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: right; /* Center align the title horizontally */
   padding-left: 20%;
+}
+
+.selected-board-title h3 {
+  text-align: center; /* Align the subtitle to the left side */
+  align-self: center; /* Align the subtitle to the left side within its container */
 }

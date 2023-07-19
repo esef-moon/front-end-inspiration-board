@@ -203,9 +203,16 @@ function App() {
           </div>
         </section>
       </section>
-      <section className="selected-board-title"> 
-        <h2>Current Board: {selectedBoard.title}</h2>
-        <h3>Owner: {selectedBoard.owner}</h3>
+      {/* if selected board exists display title and owner, else display Please select board  */}
+      <section className="selected-board-title">
+          {selectedBoard.board_id ? (
+            <>
+              <h2>{selectedBoard.title}</h2>
+              <h3> Owner: {selectedBoard.owner}</h3>
+            </>
+          ) : (
+            <h2>Please select a board</h2>
+          )}
       </section>
       <section class="card-list">
      
