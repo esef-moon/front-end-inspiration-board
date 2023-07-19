@@ -1,5 +1,5 @@
 * {
-  background-color: rgb(36, 37, 47);
+  background-color: #2f3b6d;
 }
 .page__container{
   display:grid;
@@ -29,7 +29,7 @@
 
 h1, h2, h3 {
   font-family: 'Oswald', sans-serif;
-  color: white;
+  color: #00f5a3;
 }
 
 h1 {
@@ -45,20 +45,57 @@ p, input, button, label {
   color: white;
 }
 
+/* #ff7b7b */
+
 .boards__list {
   display: flex;
   flex-direction: column;
+  background-color: #5f688c;
+  padding: 10%;
+  border-radius: 10px;
 }
 
-.selected-board-title {
+.boards__list h3 {
+  background-color: #5f688c;
+  margin-bottom: 10px;
+}
+
+.boards__list button {
+  background-color: #5f688c;
+  color: #fff;
+  border: none;
+  padding: 10px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: right; /* Center align the title horizontally */
-  padding-left: 20%;
+  align-items: center;
+  width: 100%;
 }
 
-.selected-board-title h3 {
-  text-align: center; /* Align the subtitle to the left side */
-  align-self: center; /* Align the subtitle to the left side within its container */
+.boards__list button:hover {
+  background-color: #00d1b2;
+  cursor: pointer;
+  color: #2f3b6d;
+
+}
+
+.board-item {
+  display: flex;
+  align-items: center;
+  background-color: #00d1b2;
+}
+
+.board-item .selection-box {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  background-color: inherit;
+}
+
+.board-item .board-title {
+  flex: 1;
+}
+
+.board-item .trash-can {
+  margin-left: 10px;
+  background-color: inherit;
+  border: none;
 }

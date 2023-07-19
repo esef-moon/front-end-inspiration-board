@@ -127,23 +127,38 @@ function App() {
   // select or delete board functions
   const renderBoardList = () => {
     return boards.map((board) => {
+      const isSelected = board.board_id === selectedBoard.board_id;
+      console.log(isSelected, board, board.board_id, selectedBoard, "hiii")
       return ( 
         <span key={board.board_id}>
           <button 
             id={board.board_id} 
             name='board'
+            className="board-item"
+          >
+
+           <button
+            className={`selection-box ${isSelected ? 'selected' : ''}`}
             onClick={() => changeSelectedBoard(board.board_id)}
           >
-            {board.title} 
+
+            {isSelected ? '●' : '○'}
+
           </button>
 
-          <button
+            {board.title} 
+
+            <button
             id={board.board_id}
             name='trash'
             onClick={() => deleteBoard(board.board_id)}
+            className='trash-can'
           >
             🗑️
           </button>
+          </button>
+
+          
         </span>
         
       )
@@ -175,11 +190,12 @@ function App() {
       <section className="content__container">
         <section className="boards__container">
           <section className="boards__list" >
-              <button 
+              {/* <button 
                 onClick={newBoardToggleForm}
               >
                 New Board {showHideCards}
-              </button>
+              </button> */}
+              <h3> Board List</h3>
               {renderBoardList()}
               {/* <BoardList
                 boards = { boards }
