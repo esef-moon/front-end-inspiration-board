@@ -1,5 +1,65 @@
-.post-it {
+ /* .post-it {
     background-color: darkmagenta;
-    padding: 3%;
+    padding: 50%;
     margin: 10%;
+} */
+
+.card-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:#5f688c;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10%;
+  }
+  
+  .card-component p.post-it {
+    text-align: center;
+    background-color: #5f688c;
+    
+  }
+  .like-delete {
+    background-color:#5f688c;  
 }
+
+  .card-component .like-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20px;
+    background-color:#5f688c;
+  }
+  
+  .card-component .like-section button {
+    background-color: transparent;
+    border: none;
+    margin-right: 10px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .card-component .like-section p {
+    margin-right: 10px;
+  }
+  
+  .card-component .delete-button {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:  #00d1b2;
+    color: #2f3b6d;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .card-component .delete-button:hover {
+    background-color: #14eaca;
+  }

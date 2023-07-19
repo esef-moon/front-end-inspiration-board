@@ -15,15 +15,17 @@ const Card = (props) => {
     };
 
     return (
-        <div>
+        <div className="card-component">
            
             <p className="post-it">{props.message}</p>
-            <div className="post-it">
-                <button onClick={onLikeCard}>
-                    {props.updateLike ? '❤️' : '🤍'}
-                </button>
-                <p>{ props.likesCount }</p> 
-                <button onClick={onDeleteCard} >
+            <div className='like-delete'>
+                <section className="like-section"> 
+                    <button onClick={onLikeCard}>
+                        {props.updateLike ? '❤️' : '🤍'} { props.likesCount }
+                    </button>
+                </section>
+                
+                <button onClick={onDeleteCard}  className="delete-button">
                     Delete Card
                 </button>
             </div>
