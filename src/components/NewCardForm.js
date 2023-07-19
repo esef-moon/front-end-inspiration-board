@@ -39,7 +39,7 @@ const NewCardForm = ({ addCard }) => {
         </div>
         <p>Preview:</p>
         <div id="preview">{cardFormData.message}</div>
-        <input type="submit" value="submit" onClick={handleSubmit} />
+        <input type="submit" value="submit" onClick={handleSubmit}/>
       </form>
     </section>
   );
