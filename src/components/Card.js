@@ -15,9 +15,9 @@ const Card = (props) => {
     };
 
     return (
-        <section>
-            <p>{props.message}</p>
-            <div>
+        <section className="post-it">
+            <p className="post-it">{props.message}</p>
+            <div className="post-it">
                 <button onClick={onLikeCard}>
                     {props.updateLike ? '❤️' : '🤍'}
                 </button>

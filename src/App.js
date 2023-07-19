@@ -166,15 +166,15 @@ function App() {
   
 
   return (
-    <div class="page__container">
-      <header class="AJS__logo">
+    <div className="page__container">
+      <header className="AJS__logo">
         <section>
           <h1>AJS INSPIRATION BOARD</h1>
         </section>
       </header>
-      <section class="content__container">
-        <section class="boards__container">
-          <section class="boards__list" >
+      <section className="content__container">
+        <section className="boards__container">
+          <section className="boards__list" >
               <button 
                 onClick={newBoardToggleForm}
               >
@@ -197,13 +197,18 @@ function App() {
         
     
         <section>
-          <div><h2>Create Card</h2>
+          <div><h3>Create Card</h3>
           <NewCardForm addCard={postCard} 
           />
           </div>
         </section>
       </section>
+      <section className="selected-board-title"> 
+        <h2>Current Board: {selectedBoard.title}</h2>
+        <h3>Owner: {selectedBoard.owner}</h3>
+      </section>
       <section class="card-list">
+     
           <Board selectedBoard={ selectedBoard } 
           loadCards = {loadCards}
           cards = {cards}

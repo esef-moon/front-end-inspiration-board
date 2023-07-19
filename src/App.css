@@ -1,3 +1,6 @@
+* {
+  background-color: rgb(36, 37, 47);
+}
 .page__container{
   display:grid;
   grid-template-columns: 30% 70%;
@@ -22,4 +25,35 @@
 
 .card-list {
   grid-area: 2 / 2 / 3 / 3;
+}
+
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  color: white;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+h2 {
+  font-size: 50px;
+}
+p, input, button, label {
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+.boards__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-board-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 20%;
 }

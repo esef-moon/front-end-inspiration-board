@@ -28,8 +28,8 @@ const NewBoardForm = (props) => {
 
     return (
         <section className={props.showHideCards}>
-            <h2>Create Board</h2>
-            <form onSubmit={ handleFormSubmit }>
+            <h3>Create Board</h3>
+            <form onSubmit={ handleFormSubmit } className="create-board-form">
                 {/* form board title */}
                 <label htmlFor='boardName'>Board Title:</label>
                 <input

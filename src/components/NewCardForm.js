@@ -26,8 +26,9 @@ const NewCardForm = ({ addCard }) => {
   };
   return (
     <section>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <div>
+        <label htmlFor='message'>Message:</label>
           <input
             type="text"
             id="message"
@@ -36,7 +37,7 @@ const NewCardForm = ({ addCard }) => {
             onChange={updatePreview}
           />
         </div>
-        <p>Previews:</p>
+        <p>Preview:</p>
         <div id="preview">{cardFormData.message}</div>
         <input type="submit" value="submit" onClick={handleSubmit} />
       </form>
