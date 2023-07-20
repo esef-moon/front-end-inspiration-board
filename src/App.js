@@ -190,34 +190,24 @@ function App() {
       <section className="content__container">
         <section className="boards__container">
           <section className="boards__list" >
-              {/* <button 
-                onClick={newBoardToggleForm}
-              >
-                New Board {showHideCards}
-              </button> */}
               <h3> Board List</h3>
               {renderBoardList()}
-              {/* <BoardList
-                boards = { boards }
-              /> */}
           </section>
         </section>
         
-        <section class="new-board-form__container">
-          <NewBoardForm 
-            showHideCards={showHideCards} 
-            createNewBoard={createNewBoard} 
-          />
-        </section>
-        
-        
-    
-        <section>
-          <div><h3>Create Card</h3>
-          <NewCardForm addCard={postCard} 
-          />
-          </div>
-        </section>
+          <section class="new-board-form__container">
+            <NewBoardForm 
+              showHideCards={showHideCards} 
+              createNewBoard={createNewBoard} 
+            />
+          </section>
+      
+          <section className="card-form__container">
+            <div>
+            <NewCardForm addCard={postCard} 
+            />
+            </div>
+          </section>
       </section>
       {/* if selected board exists display title and owner, else display Please select board  */}
       <section className="selected-board-title">

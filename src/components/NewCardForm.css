@@ -1,0 +1,63 @@
+.cardform__container {
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #5f688c;
+    padding: 10%;
+    border-radius: 10px;
+
+}
+.create-card-title {
+    background-color: #5f688c;
+}
+.boards__list {
+    display: flex;
+    flex-direction: column;
+    background-color: #5f688c;
+    
+  }
+  
+
+
+ 
+  .cardform__container .submit {
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:  #00d1b2;
+    color: #2f3b6d;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    border-color:#00d1b2 ;
+  }
+  
+  .cardform__container .submit:hover {
+    background-color: #20fbda;
+  }
+
+  .cardform__container label {
+    background-color: #5f688c;
+  }
+
+  .preview-title {
+    background-color: #5f688c;
+  }
+
+  .message {
+    background-color: #5f688c;
+  }
+
+  .preview {
+    background-color: #aeb4cf;
+    color: #2f3b6d;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .cardform {
+    background-color: #5f688c;
+  }

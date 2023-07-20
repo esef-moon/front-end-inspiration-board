@@ -25,9 +25,10 @@ const NewCardForm = ({ addCard }) => {
     setCardFormData(INITIAL_FORM_DATA);
   };
   return (
-    <section>
-      <form onSubmit={handleSubmit} >
-        <div>
+    <section className="cardform__container">
+      <h3 className="create-card-title"> Create Card </h3>
+      <form onSubmit={handleSubmit} className="cardform" >
+        <div className="message">
         <label htmlFor='message'>Message:</label>
           <input
             type="text"
@@ -37,9 +38,9 @@ const NewCardForm = ({ addCard }) => {
             onChange={updatePreview}
           />
         </div>
-        <p>Preview:</p>
-        <div id="preview">{cardFormData.message}</div>
-        <input type="submit" value="submit" onClick={handleSubmit}/>
+        <p className="preview-title">Preview:</p>
+        <div className="preview">{cardFormData.message}</div>
+        <input type="submit" value="submit" onClick={handleSubmit} className="submit"/>
       </form>
     </section>
   );

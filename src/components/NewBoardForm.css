@@ -3,5 +3,52 @@
     align-items: left;
     justify-content: center;
     flex-direction: column;
+    background-color: #5f688c;
+    padding: 10%;
+    border-radius: 10px;
 
 }
+.create-board-title {
+    background-color: #5f688c;
+}
+.boards__list {
+    display: flex;
+    flex-direction: column;
+    background-color: #5f688c;
+    
+  }
+  
+
+  
+  .create-board-form button {
+    background-color: #5f688c;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+ 
+  .create-board-form .submit {
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:  #00d1b2;
+    color: #2f3b6d;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    border-color:#00d1b2 ;
+  }
+  
+  .create-board-form .submit:hover {
+    background-color: #20fbda;
+  }
+
+  .create-board-form label {
+    background-color: #5f688c;
+  }

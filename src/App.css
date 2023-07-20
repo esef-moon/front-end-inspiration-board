@@ -9,6 +9,14 @@
 
 }
 
+.boards__container {
+  margin: 15%;
+}
+
+.card-form__container {
+  margin: 15%;
+}
+
 .AJS__logo{
   grid-area: 1/ 1/ 2/ 2;
   font-size: 10px;
@@ -107,4 +115,12 @@ p, input, button, label {
   margin-left: 10px;
   background-color: inherit;
   border: none;
+}
+
+input {
+  background-color: #aeb4cf;
+  color: #2f3b6d;
+  padding: 10px;
+  border-radius: 5px;
+  border-color:  #aeb4cf;
 }

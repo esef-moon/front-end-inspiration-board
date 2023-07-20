@@ -1,9 +1,3 @@
- /* .post-it {
-    background-color: darkmagenta;
-    padding: 50%;
-    margin: 10%;
-} */
-
 .card-component {
     display: flex;
     flex-direction: column;
