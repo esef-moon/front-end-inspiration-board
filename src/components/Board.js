@@ -86,6 +86,7 @@ const Board = ({selectedBoard, loadCards, cards, setCards}) => {
   )
   };
 
+  // prop types 
 Board.propTypes = {
   selectedBoard: PropTypes.shape({
     board_id: PropTypes.number.isRequired,
